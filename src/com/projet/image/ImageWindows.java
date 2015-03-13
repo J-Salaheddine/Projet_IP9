@@ -63,6 +63,8 @@ public class ImageWindows extends JFrame {
 		int[] tabG = new int[256] ;
 		int[] tabB = new int[256] ;
 		
+		int[] HisCumuler = new int[256] ;
+		
 		int w = image.getWidth();
 		int h = image.getHeight();
 		for(int i=0; i<w; i++){
@@ -79,8 +81,18 @@ public class ImageWindows extends JFrame {
 		 }
 		}
 		
+		//rermplissage de l'histogramme cumuler
+		//valeur i des trois tableau stocker dans le 4eme
+		for(int i=0; i<tabR.length ;i++){
+			HisCumuler[i] = tabR[i] + tabG[i] + tabB[i];
+		}
+		
+		
 		for(int i=0; i<tabR.length ; i++){
-			System.out.println("Nombre de pixel "+i+" :"+tabG[i]);
+			System.out.print("R: "+i+" :"+tabR[i]);
+			System.out.print("   G:"+i+" :"+tabG[i]);
+			System.out.print("   B "+i+" :"+tabB[i]);
+			System.out.println("       Cumulée: "+HisCumuler[i]);
 		}
 		
 	    // Transformer le tableau en liste
