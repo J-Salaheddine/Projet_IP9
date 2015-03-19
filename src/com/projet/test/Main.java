@@ -1,6 +1,6 @@
 package com.projet.test;
 
-import com.projet.image.ImageWindows;
+import com.projet.image.ImageWindows2;
 import com.projet.image.TraitementImages;
 
 public class Main {
@@ -10,7 +10,7 @@ public class Main {
 		System.out.println("This is a test !!");
 		TraitementImages TI = new TraitementImages();
 		
-		ImageWindows iw = new ImageWindows("C:\\image2.jpg");
+		ImageWindows2 iw = new ImageWindows2("C:\\image2.jpg");
 		iw.setVisible(true);
 	}
 
