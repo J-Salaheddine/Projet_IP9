@@ -7,8 +7,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
-
-
 public class ImageWindows2 extends JFrame {
 	
 	/**
@@ -23,15 +21,12 @@ public class ImageWindows2 extends JFrame {
 	
 	
 	public ImageWindows2(String pathImage) {
-		
 		try {
-		 image = ImageIO.read(new File(pathImage));
-		} 
-		catch (IOException e) {
+			image = ImageIO.read(new File(pathImage));
+		} catch (IOException e) {
 			System.out.println("Fichier introuvable!!");
-		 e.printStackTrace();
+			e.printStackTrace();
 		}
-
 		remplirTableRGB(image);
 		initUI(image);
 	}
@@ -53,13 +48,12 @@ public class ImageWindows2 extends JFrame {
 				int g = (rgb >> 8) & 0xff;
 				int b = rgb & 0xff;
 
-				calculerValeur(r,g,b);
+				calculerValeur(r, g, b);
 				tabRg[Utiles.deffinirIntervalRG(rg)]++;
 			}
 		}
 	}
 	
-
 	
 	/**
 	 * calcule des valeur de rg by et wb avec les formules suivantes;
@@ -75,12 +69,6 @@ public class ImageWindows2 extends JFrame {
 		by = 2*b-r-g;
 		wb = r + g + b;
 	}
-	
-
-	
-	
-	
-	
 
 	private void initUI(BufferedImage image) {
 		setTitle("Images view");
