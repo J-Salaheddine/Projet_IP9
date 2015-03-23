@@ -1,14 +1,19 @@
 package com.projet.test;
 
-import com.projet.image.ImageWindows2;
+import com.projet.image.ObjetImage;
+import com.projet.image.Utiles;
 
 public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		ImageWindows2 iw = new ImageWindows2("C:\\image2.jpg");
-		iw.setVisible(true);
+		ObjetImage oi1 = new ObjetImage("C:\\image2.jpg");
+		ObjetImage oi2 = new ObjetImage("C:\\image.jpg");
+//		oi1.setVisible(true);
+//		oi2.setVisible(true);
+		System.out.println(Utiles.calculerDistance(oi1, oi2));
+		System.out.println(Utiles.deffinirIntervalRG(10));
 	}
 
 }
