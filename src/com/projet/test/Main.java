@@ -1,6 +1,7 @@
 package com.projet.test;
 
 import com.projet.model.ChargerRepertoire;
+import com.projet.outiles.LectureSignature;
 
 public class Main {
 
@@ -20,12 +21,9 @@ public class Main {
 		
 		//ChargerBDD maj = new ChargerBDD("C:\\Users\\Public\\Pictures\\Sample Pictures");
 		
-		//Utiles.listerRepertoire(file);
+		LectureSignature lf = new LectureSignature("C:\\Users\\Nile\\Documents\\GitHub\\Projet_IP9\\BDD\\Signature\\Chrysanthemum.txt");
+		lf.affiche();
 		
-		//Utiles.copierFichier();
-//		ObjetImage oi1 = new ObjetImage("C:\\fgfg.jpg");
-//		ChargerImage ci = new ChargerImage(oi1);
-		ChargerRepertoire cr = new ChargerRepertoire("C:\\Users\\Public\\Pictures\\Sample Pictures");
 		
 	}
 

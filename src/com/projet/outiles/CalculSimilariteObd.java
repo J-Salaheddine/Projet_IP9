@@ -1,38 +1,39 @@
 package com.projet.outiles;
 
-public class CalculSimilarite {
-
-	public CalculSimilarite(ObjetImage objetImage1, ObjetImage objetImage2) {
-		super();
+public class CalculSimilariteObd {
+	
+	
+	public CalculSimilariteObd(ObjetImage objetImage, LectureSignature lectureSignature){
+		
 	}
-
-	public static float getTauxSimlarite(ObjetImage oi1, ObjetImage oi2) {
-		float tauxDeSimilarite = sommeDesMin(oi1, oi2)/calculePlusPetiteSomme(oi1, oi2);
+	
+	public static float getTauxSimlarite(ObjetImage oi1, LectureSignature lectureSignature) {
+		float tauxDeSimilarite = sommeDesMin(oi1, lectureSignature)/calculePlusPetiteSomme(oi1, lectureSignature);
 		System.out.println("Le taux de cimilarité est: "+tauxDeSimilarite);
 		return tauxDeSimilarite;
 	}
 
-	public static float sommeDesMin(ObjetImage oi1, ObjetImage oi2) {
+	public static float sommeDesMin(ObjetImage oi1, LectureSignature lectureSignature) {
 		float minsumRG = 0;
 		float minsumBY = 0;
 		float minsumWB = 0;
 
-		minsumRG = calculerMin(oi1, oi2, 0);
-		minsumBY = calculerMin(oi1, oi2, 1);
-		minsumWB = calculerMin(oi1, oi2, 2);
+		minsumRG = calculerMin(oi1, lectureSignature, 0);
+		minsumBY = calculerMin(oi1, lectureSignature, 1);
+		minsumWB = calculerMin(oi1, lectureSignature, 2);
 		float sommeMin = (minsumRG + minsumBY + minsumWB) / 3;
 
 		return sommeMin;
 	}
 
-	public static float calculePlusPetiteSomme(ObjetImage oi1, ObjetImage oi2) {
+	public static float calculePlusPetiteSomme(ObjetImage oi1, LectureSignature lectureSignature) {
 		float minsumRG = 0;
 		float minsumBY = 0;
 		float minsumWB = 0;
 
-		minsumRG = calculerMinHsitogramme(oi1, oi2, 0);
-		minsumBY = calculerMinHsitogramme(oi1, oi2, 1);
-		minsumWB = calculerMinHsitogramme(oi1, oi2, 2);
+		minsumRG = calculerMinHsitogramme(oi1, lectureSignature, 0);
+		minsumBY = calculerMinHsitogramme(oi1, lectureSignature, 1);
+		minsumWB = calculerMinHsitogramme(oi1, lectureSignature, 2);
 		float plusPetiteSomme = (minsumRG + minsumBY + minsumWB) / 3;
 
 		return plusPetiteSomme;
@@ -49,25 +50,25 @@ public class CalculSimilarite {
 	 * @param numeroTable
 	 * @return
 	 */
-	public static int calculerMin(ObjetImage oi1, ObjetImage oi2, int numeroTable) {
+	public static int calculerMin(ObjetImage oi1, LectureSignature lectureSignature, int numeroTable) {
 		int minumum = 0;
 		switch (numeroTable) {
 		case 0:
 			for (int i = 0; i < StaticValues.NOMBRE_DE_DIVISION_RG; i++) {
 				minumum += Utiles.getMin(oi1.getTabRgElement(i),
-						oi2.getTabRgElement(i));
+						lectureSignature.getTabRgElement(i));
 			}
 			break;
 		case 1:
 			for (int i = 0; i < StaticValues.NOMBRE_DE_DIVISION_BY; i++) {
 				minumum += Utiles.getMin(oi1.getTabByElement(i),
-						oi2.getTabByElement(i));
+						lectureSignature.getTabByElement(i));
 			}
 			break;
 		case 2:
 			for (int i = 0; i < StaticValues.NOMBRE_DE_DIVISION_WB; i++) {
 				minumum += Utiles.getMin(oi1.getTabWbElement(i),
-						oi2.getTabWbElement(i));
+						lectureSignature.getTabWbElement(i));
 			}
 			break;
 		default:
@@ -84,7 +85,7 @@ public class CalculSimilarite {
 	 * @param oi1
 	 * @param oi2
 	 */
-	public static float calculerMinHsitogramme(ObjetImage oi1, ObjetImage oi2,
+	public static float calculerMinHsitogramme(ObjetImage oi1, LectureSignature lectureSignature,
 			int numeroTable) {
 		int tabSommeMin1 = 0;
 		int tabSommeMin2 = 0;
@@ -92,19 +93,19 @@ public class CalculSimilarite {
 		case 0:
 			for (int i = 0; i < StaticValues.NOMBRE_DE_DIVISION_RG; i++) {
 				tabSommeMin1 += oi1.getTabRgElement(i);
-				tabSommeMin2 += oi2.getTabRgElement(i);
+				tabSommeMin2 += lectureSignature.getTabRgElement(i);
 			}
 			break;
 		case 1:
 			for (int i = 0; i < StaticValues.NOMBRE_DE_DIVISION_BY; i++) {
 				tabSommeMin1 += oi1.getTabByElement(i);
-				tabSommeMin2 += oi2.getTabByElement(i);
+				tabSommeMin2 += lectureSignature.getTabByElement(i);
 			}
 			break;
 		case 2:
 			for (int i = 0; i < StaticValues.NOMBRE_DE_DIVISION_WB; i++) {
 				tabSommeMin1 += oi1.getTabWbElement(i);
-				tabSommeMin2 += oi2.getTabWbElement(i);
+				tabSommeMin2 += lectureSignature.getTabWbElement(i);
 
 			}
 			break;
@@ -112,5 +113,4 @@ public class CalculSimilarite {
 		float tabSommeMin = Utiles.getMin(tabSommeMin1, tabSommeMin2);
 		return tabSommeMin;
 	}
-
 }
