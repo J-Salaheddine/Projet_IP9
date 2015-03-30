@@ -24,6 +24,8 @@ public class Controleur {
 		ObjetImage oi1 = new ObjetImage(imagePath);
 		RechercheSimilariteImage rechercheSimilariteImage = new RechercheSimilariteImage(oi1, taux);
 		rechercheSimilariteImage.listerRepertoire();
-		
 	}
+	
+	
+	
 }
