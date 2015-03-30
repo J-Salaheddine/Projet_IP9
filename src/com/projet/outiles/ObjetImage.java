@@ -28,7 +28,7 @@ public class ObjetImage{
 			e.printStackTrace();
 		}
 		remplirTableRGB(image);
-		affiche();
+		//affiche();
 	}
 
 	/**

@@ -17,9 +17,8 @@ public class ChargerImage {
 		
 		String cheminDuDossier = objetImage.getPath();
 		
-		if (cheminDuDossier.endsWith(".jpg") == true) {
+		if (cheminDuDossier.endsWith(".jpg") == true  || cheminDuDossier.endsWith(".png") == true) {
 			if (Utiles.copyFile(cheminDuDossier,StaticValues.BDD_IMAGES+objetImage.getFileName()+objetImage.getExtention())) {
-				
 				ObjetImage oi = new ObjetImage(cheminDuDossier);
 				GestionnaireSignature gs = new GestionnaireSignature(oi);
 			}

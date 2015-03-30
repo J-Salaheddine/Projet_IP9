@@ -2,13 +2,13 @@ package com.projet.outiles;
 
 public class CalculSimilarite {
 
-	public CalculSimilarite(ObjetImage objetImage1, ObjetImage objetImage2) {
+/*	public CalculSimilarite(ObjetImage objetImage1, ObjetImage objetImage2) {
 		super();
 	}
 
 	public static float getTauxSimlarite(ObjetImage oi1, ObjetImage oi2) {
 		float tauxDeSimilarite = sommeDesMin(oi1, oi2)/calculePlusPetiteSomme(oi1, oi2);
-		System.out.println("Le taux de cimilarité est: "+tauxDeSimilarite);
+		//System.out.println("Le taux de cimilarité est: "+tauxDeSimilarite);
 		return tauxDeSimilarite;
 	}
 
@@ -49,7 +49,7 @@ public class CalculSimilarite {
 	 * @param numeroTable
 	 * @return
 	 */
-	public static int calculerMin(ObjetImage oi1, ObjetImage oi2, int numeroTable) {
+	/*public static int calculerMin(ObjetImage oi1, ObjetImage oi2, int numeroTable) {
 		int minumum = 0;
 		switch (numeroTable) {
 		case 0:
@@ -84,7 +84,7 @@ public class CalculSimilarite {
 	 * @param oi1
 	 * @param oi2
 	 */
-	public static float calculerMinHsitogramme(ObjetImage oi1, ObjetImage oi2,
+	/*public static float calculerMinHsitogramme(ObjetImage oi1, ObjetImage oi2,
 			int numeroTable) {
 		int tabSommeMin1 = 0;
 		int tabSommeMin2 = 0;
@@ -97,7 +97,6 @@ public class CalculSimilarite {
 			break;
 		case 1:
 			for (int i = 0; i < StaticValues.NOMBRE_DE_DIVISION_BY; i++) {
-				tabSommeMin1 += oi1.getTabByElement(i);
 				tabSommeMin2 += oi2.getTabByElement(i);
 			}
 			break;
@@ -112,5 +111,5 @@ public class CalculSimilarite {
 		float tabSommeMin = Utiles.getMin(tabSommeMin1, tabSommeMin2);
 		return tabSommeMin;
 	}
-
+*/
 }

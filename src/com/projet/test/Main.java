@@ -1,7 +1,6 @@
 package com.projet.test;
 
-import com.projet.model.ChargerRepertoire;
-import com.projet.outiles.LectureSignature;
+import com.projet.controleur.Controleur;
 
 public class Main {
 
@@ -21,9 +20,11 @@ public class Main {
 		
 		//ChargerBDD maj = new ChargerBDD("C:\\Users\\Public\\Pictures\\Sample Pictures");
 		
-		LectureSignature lf = new LectureSignature("C:\\Users\\Nile\\Documents\\GitHub\\Projet_IP9\\BDD\\Signature\\Chrysanthemum.txt");
-		lf.affiche();
+//		LectureSignature lf = new LectureSignature("C:\\Users\\Nile\\Documents\\GitHub\\Projet_IP9\\BDD\\Signature\\Chrysanthemum.txt");
+//		lf.affiche();
 		
+		Controleur controleur = new Controleur();
+		controleur.rechercheImageSimlaire("C:\\Users\\Nile\\Pictures\\image2.jpg", 0.6f);
 		
 	}
 

@@ -13,7 +13,5 @@ public interface StaticValues {
 	public static String LIEN_EXTERIEUR = "C:\\Users\\Public\\Pictures\\Sample Pictures";
 	public static String BDD_SIGANTURE = "BDD\\Signature\\";
 	public static String BDD_IMAGES = "BDD\\Image\\";
-
-	
 	
 }

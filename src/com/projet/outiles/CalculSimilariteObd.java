@@ -2,18 +2,24 @@ package com.projet.outiles;
 
 public class CalculSimilariteObd {
 	
+	private ObjetImage objetImage;
+	private LectureSignature lectureSignature;
+
 	
-	public CalculSimilariteObd(ObjetImage objetImage, LectureSignature lectureSignature){
-		
+	public CalculSimilariteObd(ObjetImage objetImage,
+			LectureSignature lectureSignature) {
+		super();
+		this.objetImage = objetImage;
+		this.lectureSignature = lectureSignature;
 	}
-	
-	public static float getTauxSimlarite(ObjetImage oi1, LectureSignature lectureSignature) {
-		float tauxDeSimilarite = sommeDesMin(oi1, lectureSignature)/calculePlusPetiteSomme(oi1, lectureSignature);
-		System.out.println("Le taux de cimilarité est: "+tauxDeSimilarite);
+
+	public float getTauxSimlarite() {
+		float tauxDeSimilarite = sommeDesMin(this.objetImage, lectureSignature)/calculePlusPetiteSomme(objetImage, lectureSignature);
+		//System.out.println("Le taux de cimilarité est: "+tauxDeSimilarite);
 		return tauxDeSimilarite;
 	}
 
-	public static float sommeDesMin(ObjetImage oi1, LectureSignature lectureSignature) {
+	public float sommeDesMin(ObjetImage oi1, LectureSignature lectureSignature) {
 		float minsumRG = 0;
 		float minsumBY = 0;
 		float minsumWB = 0;
@@ -26,7 +32,7 @@ public class CalculSimilariteObd {
 		return sommeMin;
 	}
 
-	public static float calculePlusPetiteSomme(ObjetImage oi1, LectureSignature lectureSignature) {
+	public float calculePlusPetiteSomme(ObjetImage oi1, LectureSignature lectureSignature) {
 		float minsumRG = 0;
 		float minsumBY = 0;
 		float minsumWB = 0;
@@ -50,7 +56,7 @@ public class CalculSimilariteObd {
 	 * @param numeroTable
 	 * @return
 	 */
-	public static int calculerMin(ObjetImage oi1, LectureSignature lectureSignature, int numeroTable) {
+	public int calculerMin(ObjetImage oi1, LectureSignature lectureSignature, int numeroTable) {
 		int minumum = 0;
 		switch (numeroTable) {
 		case 0:
@@ -85,7 +91,7 @@ public class CalculSimilariteObd {
 	 * @param oi1
 	 * @param oi2
 	 */
-	public static float calculerMinHsitogramme(ObjetImage oi1, LectureSignature lectureSignature,
+	public float calculerMinHsitogramme(ObjetImage oi1, LectureSignature lectureSignature,
 			int numeroTable) {
 		int tabSommeMin1 = 0;
 		int tabSommeMin2 = 0;
