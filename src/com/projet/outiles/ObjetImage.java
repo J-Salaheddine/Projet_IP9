@@ -7,7 +7,9 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class ObjetImage{
-	
+	/*
+	 * Test
+	 */
 
 	private int[] tabRg = new int[StaticValues.NOMBRE_DE_DIVISION_RG] ;
 	private int[] tabBy = new int[StaticValues.NOMBRE_DE_DIVISION_BY] ;

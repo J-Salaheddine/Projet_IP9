@@ -14,6 +14,10 @@ public class LectureSignature {
 		super();
 		lireFicher(filePath);
 	}
+	
+	public LectureSignature(){
+		
+	}
 
 	public void lireFicher(String filePath) {
 
