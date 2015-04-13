@@ -1,8 +1,10 @@
-package com.projet.outiles;
+package com.projet.gestionnaireDossier;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+
+import com.projet.outiles.StaticValues;
 
 public class LectureSignature {
 
@@ -11,13 +13,13 @@ public class LectureSignature {
 	private int[] tabWb = new int[StaticValues.NOMBRE_DE_DIVISION_WB];
 
 	public LectureSignature(String filePath) {
-		super();
 		lireFicher(filePath);
 	}
 	
-	public LectureSignature(){
+	public LectureSignature(String rg, String by, String wb){
 		
 	}
+
 
 	public void lireFicher(String filePath) {
 

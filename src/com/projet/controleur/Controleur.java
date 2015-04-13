@@ -3,7 +3,9 @@ package com.projet.controleur;
 import com.projet.model.ChargerImage;
 import com.projet.model.ChargerRepertoire;
 import com.projet.model.RechercheSimilariteImage;
-import com.projet.outiles.ObjetImage;
+import com.projet.outiles.CalculeSimilariteSig;
+import com.projet.outiles.Signature;
+import com.projet.outiles.Signature;
 
 public class Controleur {
 
@@ -12,7 +14,7 @@ public class Controleur {
 	}
 	
 	public void chargerImage(String imagePath){
-		ObjetImage objetImage = new ObjetImage(imagePath);
+		Signature objetImage = new Signature(imagePath);
 		ChargerImage ci = new ChargerImage(objetImage);
 	}
 	
@@ -21,11 +23,42 @@ public class Controleur {
 	}
 	
 	public void rechercheImageSimlaire(String imagePath, float taux){
-		ObjetImage oi1 = new ObjetImage(imagePath);
+		Signature oi1 = new Signature(imagePath);
 		RechercheSimilariteImage rechercheSimilariteImage = new RechercheSimilariteImage(oi1, taux);
 		rechercheSimilariteImage.listerRepertoire();
 	}
 	
+	/**
+	 * Fonction permetant de calculer la similarité entre de signature
+	 * @param sig1
+	 * @param sig2
+	 * @return
+	 */
+	public static float calculerDeSimilarite(Signature sig1, Signature sig2){
+		CalculeSimilariteSig css = new CalculeSimilariteSig(sig1, sig2);
+		return css.getTauxSimlarite();
+	}
 	
 	
+	/**
+	 * Elle retourn un objet signature a partir d'un fichier image
+	 * @param path
+	 * @return
+	 */
+	public static Signature getSignature(String path){
+		Signature signature = new Signature(path);
+		return signature;
+	}
+	
+	/**
+	 * elle retourn une signature a partire de trois string récupérer depuis la BDD
+	 * @param rg
+	 * @param by
+	 * @param wb
+	 * @return
+	 */
+	public static Signature getSignature(String rg, String by, String wb){
+		Signature signature = new Signature(rg, by, wb);
+		return signature;
+	}
 }

@@ -9,6 +9,29 @@ import java.nio.channels.FileChannel;
 
 public class Utiles {
 	
+	public static String getFileName2(String path) {
+		String fileName = path.substring(0,path.length() - 4);
+		
+		return fileName;
+	}
+	
+	public static String getSignatureFromeTab(String s){
+		String sig = "";
+		for(int i=0; i< s.length(); i++){
+			if(s.charAt(i) == ','){
+				sig+=" ";
+			}
+			else if(s.charAt(i) == '[' ){
+				
+			}else if(s.charAt(i) == ']'){
+				i=s.length();
+			}else{
+				sig+=s.charAt(i);
+			}
+		}
+		return sig;
+	}
+	
 	public static int deffinirIntervale(int intervaleTotale, int nbrDeDivision, int nombre){
 		int j = 0;
 		int inter = intervaleTotale*2/nbrDeDivision;

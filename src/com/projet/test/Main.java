@@ -1,6 +1,10 @@
 package com.projet.test;
 
 import com.projet.controleur.Controleur;
+import com.projet.outiles.CalculeSimilariteSig;
+import com.projet.outiles.Signature;
+import com.projet.outiles.Utiles;
+import com.sun.webkit.Utilities;
 
 public class Main {
 
@@ -24,7 +28,22 @@ public class Main {
 //		lf.affiche();
 		
 		Controleur controleur = new Controleur();
-		controleur.rechercheImageSimlaire("C:\\Users\\Nile\\Pictures\\image2.jpg", 0.6f);
+		//controleur.rechercheImageSimlaire("C:\\Users\\Nile\\Pictures\\image2.jpg", 0.6f);
+		Signature sig1 = new Signature("C:\\Users\\Nile\\Pictures\\image2.jpg");
+		Signature sig2 = new Signature("C:\\fgfg.jpg");
+	
+		System.out.println(	controleur.calculerDeSimilarite(sig1, sig2));
+		
+//		Utiles.getFileName("C:\\Users\\Nile\\Pictures\\image2.jpg");
+//		System.out.println(Utiles.getFileName2("C:\\Users\\Nile\\Pictures\\image2.jpg"));
+		
+		/**
+		 * getfile name
+		 * get extancer
+		 * image2
+		 */
+		System.out.println("Test1");
+		System.out.println(Utiles.getSignatureFromeTab("[12,25,63,25]"));
 		
 	}
 

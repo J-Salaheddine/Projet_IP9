@@ -6,21 +6,24 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class ObjetImage{
-	/*
-	 * Test
-	 */
+public class Signature {
+
 
 	private int[] tabRg = new int[StaticValues.NOMBRE_DE_DIVISION_RG] ;
 	private int[] tabBy = new int[StaticValues.NOMBRE_DE_DIVISION_BY] ;
 	private int[] tabWb = new int[StaticValues.NOMBRE_DE_DIVISION_WB] ;
+	
+	private String tabRgString;
+	private String tabByString;
+	private String tabWbString;
+	
 	private BufferedImage image = null;
 	private int rg, by, wb;
 	
 	private String fileName;
 	private String pathImage;
 	
-	public ObjetImage(String pathImage) {
+	public Signature(String pathImage) {
 		this.pathImage = pathImage;
 		try {
 			image = ImageIO.read(new File(pathImage));
@@ -31,6 +34,12 @@ public class ObjetImage{
 		}
 		remplirTableRGB(image);
 		//affiche();
+	}
+	
+	public Signature(String rg, String by, String wb){
+		tabRgString = Utiles.getSignatureFromeTab(rg);
+		tabByString = Utiles.getSignatureFromeTab(by);
+		tabWbString = Utiles.getSignatureFromeTab(wb);
 	}
 
 	/**
@@ -97,6 +106,18 @@ public class ObjetImage{
 	}
 	public int getTabWbElement(int elementNumero) {
 		return tabWb[elementNumero];
+	}
+	
+	public String getTabRgString() {
+		return tabRgString;
+	}
+
+	public String getTabByString() {
+		return tabByString;
+	}
+
+	public String getTabWbString() {
+		return tabWbString;
 	}
 
 	public String getFileName() {

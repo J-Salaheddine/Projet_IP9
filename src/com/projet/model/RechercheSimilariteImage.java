@@ -2,23 +2,20 @@ package com.projet.model;
 
 import java.io.File;
 
+import com.projet.gestionnaireDossier.LectureSignature;
 import com.projet.outiles.CalculSimilariteObd;
-import com.projet.outiles.LectureSignature;
-import com.projet.outiles.ObjetImage;
+import com.projet.outiles.Signature;
 import com.projet.outiles.StaticValues;
 
 public class RechercheSimilariteImage {
-	private ObjetImage objetImage;
+	private Signature objetImage;
 	private float tauxDeSimilarite;
-	public RechercheSimilariteImage(ObjetImage objetImage,float tauxDeSimilarite){
+	public RechercheSimilariteImage(Signature objetImage,float tauxDeSimilarite){
 		super();
 		this.objetImage = objetImage;
 		this.tauxDeSimilarite = tauxDeSimilarite;
 	}
 	
-	public void calculerSimilarite(){
-		
-	}
 	
 	public void listerRepertoire() {
 		File repertoire = new File(StaticValues.BDD_SIGANTURE);
