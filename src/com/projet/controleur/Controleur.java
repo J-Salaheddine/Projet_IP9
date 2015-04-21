@@ -7,6 +7,8 @@ import com.projet.model.ChargerRepertoire;
 import com.projet.model.RechercheSimilariteImage;
 import com.projet.outiles.CalculeSimilariteSig;
 import com.projet.outiles.Signature;
+import com.projet.outiles.StaticValues;
+import com.projet.outiles.Utiles;
 
 public class Controleur {
 
@@ -75,5 +77,6 @@ public class Controleur {
 		return tauxDeSmimilarite;
 	}
 	
+
 	
 }

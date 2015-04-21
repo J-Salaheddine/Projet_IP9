@@ -33,7 +33,7 @@ public class RechercheSimilariteImage {
 				CalculSimilariteObd calculSimilariteObd = new CalculSimilariteObd(objetImage, lectureSignature);
 				if(calculSimilariteObd.getTauxSimlarite() >= this.tauxDeSimilarite){
 					System.out.println(listefichiers[i]+" avec un taux de similarité de: "+calculSimilariteObd.getTauxSimlarite());
-					recupererFichierDeSignature(listefichiers[i]);
+					//recupererFichierDeSignature(listefichiers[i]);
 					
 					}
 				}
@@ -45,16 +45,16 @@ public class RechercheSimilariteImage {
 	
 	}
 
-	public void recupererFichierDeSignature(String nomSignature){
-		String fichierSansEx = Utiles.enleverExtension(nomSignature);
-		System.out.println(StaticValues.BDD_IMAGES+fichierSansEx+".jpg");
-		if(new File(StaticValues.BDD_IMAGES+fichierSansEx+".jpg").exists()){
-			Utiles.copier(StaticValues.BDD_IMAGES+fichierSansEx+".jpg", StaticValues.BDD_RES);
-		//	Utiles.copyFile(StaticValues.BDD_IMAGES+fichierSansEx+".jpg", StaticValues.BDD_RES);
-			System.out.println("hha");
-		}else if(new File(StaticValues.BDD_IMAGES+fichierSansEx+".png").exists()){
-			Utiles.copyFile(StaticValues.BDD_IMAGES+fichierSansEx+".png", StaticValues.BDD_RES);
-		}
-	}
+//	public void recupererFichierDeSignature(String nomSignature){
+//		String fichierSansEx = Utiles.enleverExtension(nomSignature);
+//		System.out.println(StaticValues.BDD_IMAGES+fichierSansEx+".jpg");
+//		if(new File(StaticValues.BDD_IMAGES+fichierSansEx+".jpg").exists()){
+//			Utiles.copier(StaticValues.BDD_IMAGES+fichierSansEx+".jpg", StaticValues.BDD_RES);
+//		//	Utiles.copyFile(StaticValues.BDD_IMAGES+fichierSansEx+".jpg", StaticValues.BDD_RES);
+//			System.out.println("hha");
+//		}else if(new File(StaticValues.BDD_IMAGES+fichierSansEx+".png").exists()){
+//			Utiles.copyFile(StaticValues.BDD_IMAGES+fichierSansEx+".png", StaticValues.BDD_RES);
+//		}
+//	}
 
 }
