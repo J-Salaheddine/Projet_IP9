@@ -17,7 +17,7 @@ public class Main {
 		/**
 		 * Test De chargement d'image a la BD (dossier)
 		 */
-//		String cheminImage = "C:\\Users\\Nile\\Pictures\\salahImage.jpg";
+		String cheminImage = "C:\\Users\\Nile\\Pictures\\salahImage.jpg";
 //		test.chargerImage(cheminImage);
 		
 		
@@ -34,8 +34,8 @@ public class Main {
 		 * Test de callcule de cimilarité
 		 */
 		String cheminImageATester = "C:\\Users\\Nile\\Pictures\\salahImage.jpg";
-		test.rechercheImageSimlaire(cheminImageATester, 0.6f);
-		
+		//test.rechercheImageSimlaire(cheminImageATester, 0.6f);
+		Utiles.copyFile(cheminImageATester, StaticValues.BDD_SIGANTURE);
 		//Utiles.emptyDirectory(StaticValues.BDD_SIGANTURE);
 
 	}

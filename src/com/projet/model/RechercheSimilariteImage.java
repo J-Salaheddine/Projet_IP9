@@ -4,6 +4,7 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 
+import com.projet.gestionnaireDossier.GestionnaireSignature;
 import com.projet.gestionnaireDossier.LectureSignature;
 import com.projet.outiles.Signature;
 import com.projet.outiles.StaticValues;
@@ -43,14 +44,16 @@ public class RechercheSimilariteImage {
 		Utiles.emptyDirectory(StaticValues.BDD_RES);
 	
 	}
-	
+
 	public void recupererFichierDeSignature(String nomSignature){
 		String fichierSansEx = Utiles.enleverExtension(nomSignature);
+		System.out.println(StaticValues.BDD_IMAGES+fichierSansEx+".jpg");
 		if(new File(StaticValues.BDD_IMAGES+fichierSansEx+".jpg").exists()){
-			Utiles.copyFile(new File(StaticValues.BDD_IMAGES+fichierSansEx+".jpg"), StaticValues.BDD_RES);
+			Utiles.copier(StaticValues.BDD_IMAGES+fichierSansEx+".jpg", StaticValues.BDD_RES);
+		//	Utiles.copyFile(StaticValues.BDD_IMAGES+fichierSansEx+".jpg", StaticValues.BDD_RES);
 			System.out.println("hha");
 		}else if(new File(StaticValues.BDD_IMAGES+fichierSansEx+".png").exists()){
-			Utiles.copyFile(new File(StaticValues.BDD_IMAGES+fichierSansEx+".png"), StaticValues.BDD_RES);
+			Utiles.copyFile(StaticValues.BDD_IMAGES+fichierSansEx+".png", StaticValues.BDD_RES);
 		}
 	}
 

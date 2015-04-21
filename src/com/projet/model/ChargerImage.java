@@ -16,7 +16,6 @@ public class ChargerImage {
 	public void chargerImageBD(Signature objetImage) {
 		
 		String cheminDuDossier = objetImage.getPath();
-		
 		if (cheminDuDossier.endsWith(".jpg") == true  || cheminDuDossier.endsWith(".png") == true) {
 			if (Utiles.copyFile(cheminDuDossier,StaticValues.BDD_IMAGES+objetImage.getFileName()+objetImage.getExtention())) {
 				Signature oi = new Signature(cheminDuDossier);

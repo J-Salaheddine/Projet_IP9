@@ -1,5 +1,7 @@
 package com.projet.outiles;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -153,40 +155,49 @@ public class Utiles {
 		return true;
 	}
 	
-	/** copie le fichier source dans le fichier resultat
-	 * retourne vrai si cela réussit
-	 */
-	public static boolean copyFile(File fichier, String destPath){
-
-		FileChannel in = null; // canal d'entrée
-		FileChannel out = null; // canal de sortie
-		 
-		try {
-		  // Init
-		  in = new FileInputStream(fichier).getChannel();
-		  out = new FileOutputStream(destPath).getChannel();
-		 
-		  // Copie depuis le in vers le out
-		  
-		  in.transferTo(0, in.size(), out);
-		} catch (Exception e) {
-		  e.printStackTrace(); // n'importe quelle exception
-		} finally { // finalement on ferme
-		  if(in != null) {
-		  	try {
-			  in.close();
-			} catch (IOException e) {}
-		  }
-		  if(out != null) {
-		  	try {
-			  out.close();
-			} catch (IOException e) {
-				return false;
-			}
-		  }
-		}
-		return true;
-	}
 	
+	public static void copier(String cheminDuFichier, String cheminDes){
+		FileInputStream lecture= null;
+		BufferedInputStream tamponLecture = null;
+		FileOutputStream copie= null;
+		BufferedOutputStream tamponCopie= null;
+		try
+		{
+		    lecture = new FileInputStream(cheminDuFichier);
+		    tamponLecture = new BufferedInputStream(lecture);
+		     
+		    copie = new FileOutputStream(cheminDes);
+		    tamponCopie = new BufferedOutputStream(copie);
+		     
+		    while (true)
+		    {
+		        int valeurOctet = tamponLecture.read();
+		         
+		        if (valeurOctet == -1)
+		            break;
+		         
+		        tamponCopie.write(valeurOctet);
+		    }
+		}
+		catch (IOException exception)
+		{
+		    exception.printStackTrace();
+		}
+		finally
+		{ 
+		    try
+		    {
+		        tamponLecture.close();
+		        lecture.close();
+		        tamponCopie.flush();
+		        tamponCopie.close();
+		        copie.close();
+		    }
+		    catch(IOException exception1)
+		    {
+		      exception1.printStackTrace();
+		    }  
+		}
+	}
 	
 }
