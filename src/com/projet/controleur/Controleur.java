@@ -1,5 +1,7 @@
 package com.projet.controleur;
 
+import java.io.File;
+
 import com.projet.model.ChargerImage;
 import com.projet.model.ChargerRepertoire;
 import com.projet.model.RechercheSimilariteImage;
@@ -19,6 +21,11 @@ public class Controleur {
 	
 	public void chargerRepertoire(String repertoirePath){
 		ChargerRepertoire cr = new ChargerRepertoire(repertoirePath);
+	}
+	
+	public Signature sigantureAppImage(File imageFile){
+		Signature sig = new Signature(imageFile);
+		return sig;
 	}
 	
 	public void rechercheImageSimlaire(String imagePath, float taux){

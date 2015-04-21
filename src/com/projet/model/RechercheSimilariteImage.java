@@ -3,7 +3,6 @@ package com.projet.model;
 import java.io.File;
 
 import com.projet.gestionnaireDossier.LectureSignature;
-import com.projet.outiles.CalculSimilariteObd;
 import com.projet.outiles.Signature;
 import com.projet.outiles.StaticValues;
 
