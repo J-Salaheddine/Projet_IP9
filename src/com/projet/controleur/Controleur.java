@@ -5,7 +5,6 @@ import com.projet.model.ChargerRepertoire;
 import com.projet.model.RechercheSimilariteImage;
 import com.projet.outiles.CalculeSimilariteSig;
 import com.projet.outiles.Signature;
-import com.projet.outiles.Signature;
 
 public class Controleur {
 
@@ -61,4 +60,13 @@ public class Controleur {
 		Signature signature = new Signature(rg, by, wb);
 		return signature;
 	}
+	
+	public double calculerSimilarite(Signature sig1, Signature sig2){
+		double tauxDeSmimilarite;
+		CalculeSimilariteSig css = new CalculeSimilariteSig(sig1, sig2);
+		tauxDeSmimilarite =(double) css.getTauxSimlarite();
+		return tauxDeSmimilarite;
+	}
+	
+	
 }

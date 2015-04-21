@@ -9,13 +9,53 @@ import java.nio.channels.FileChannel;
 
 public class Utiles {
 	
-	public static String getFileName2(String path) {
-		String fileName = path.substring(0,path.length() - 4);
-		
+	/**
+	 * Cette fonction permet d'obtenir le nom du fichier
+	 * @param path
+	 * @return
+	 */
+	public static String getFileName(String path){
+		String fileName = "";
+		fileName = enleverExtension(path);
+		fileName = enleverCheminDuFichier(fileName);
 		return fileName;
 	}
 	
-	public static String getSignatureFromeTab(String s){
+	/**
+	 * Cette fonction permet d'nelever l'extension enleverExtension 
+	 * @param path
+	 * @return
+	 */
+	public static String enleverExtension(String path) {
+		String fileName = path.substring(0,path.length() - 4);
+		return fileName;
+	}
+	
+	/**
+	 * Cette fcontion permet de récupérer le nom complet du fichier avec l'extansion
+	 * @param filePath
+	 * @return
+	 */
+	public static String enleverCheminDuFichier(String filePath) {
+		String fileName = "";
+		for (int i = filePath.length(); i > 0; i--) {
+			if (filePath.charAt(i - 1) == '\\') {
+				i = 0;
+			}
+			if (i != 0) {
+				fileName = filePath.charAt(i - 1) + fileName;
+			}
+		}
+		return fileName;
+	}
+	
+	/**
+	 * Cette fonction permet de récupérer le  string de la signature a partir d'un string récupérer de la base de donnée
+	 * [12,56,98,52,5] ------> 12 56 98 52 5
+	 * @param s
+	 * @return
+	 */
+	public static String getSignatureFromeStringTab(String s){
 		String sig = "";
 		for(int i=0; i< s.length(); i++){
 			if(s.charAt(i) == ','){
@@ -55,26 +95,10 @@ public class Utiles {
 		}
 	}
 	
-	public static String getFileName(String filePath) {
-		String fileName = "";
-		for (int i = filePath.length(); i > 0; i--) {
 
-			if (filePath.charAt(i - 1) == '\\') {
-				System.out.println("oui");
-				i = 0;
-			}
-			if (i != 0) {
-				fileName = filePath.charAt(i - 1) + fileName;
-			}
-		}
-		System.out.println(fileName);
-		return fileName;
-	}
 	
 	public static void listerRepertoire(File repertoire) {
-
 		String[] listefichiers;
-
 		int i;
 		listefichiers = repertoire.list();
 		for (i = 0; i < listefichiers.length; i++) {
@@ -118,4 +142,6 @@ public class Utiles {
 		}
 		return true;
 	}
+	
+	
 }

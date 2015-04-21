@@ -18,14 +18,14 @@ public class CalculeSimilariteSig {
 		return tauxDeSimilarite;
 	}
 
-	private float sommeDesMin(Signature oi1, Signature lectureSignature) {
+	private float sommeDesMin(Signature oi1, Signature oi2) {
 		float minsumRG = 0;
 		float minsumBY = 0;
 		float minsumWB = 0;
 
-		minsumRG = calculerMin(oi1, lectureSignature, 0);
-		minsumBY = calculerMin(oi1, lectureSignature, 1);
-		minsumWB = calculerMin(oi1, lectureSignature, 2);
+		minsumRG = calculerMin(oi1, oi2, 0);
+		minsumBY = calculerMin(oi1, oi2, 1);
+		minsumWB = calculerMin(oi1, oi2, 2);
 		float sommeMin = (minsumRG + minsumBY + minsumWB) / 3;
 
 		return sommeMin;
@@ -55,25 +55,25 @@ public class CalculeSimilariteSig {
 	 * @param numeroTable
 	 * @return
 	 */
-	public int calculerMin(Signature oi1, Signature lectureSignature, int numeroTable) {
+	public int calculerMin(Signature oi1, Signature oi2, int numeroTable) {
 		int minumum = 0;
 		switch (numeroTable) {
 		case 0:
 			for (int i = 0; i < StaticValues.NOMBRE_DE_DIVISION_RG; i++) {
 				minumum += Utiles.getMin(oi1.getTabRgElement(i),
-						lectureSignature.getTabRgElement(i));
+						oi2.getTabRgElement(i));
 			}
 			break;
 		case 1:
 			for (int i = 0; i < StaticValues.NOMBRE_DE_DIVISION_BY; i++) {
 				minumum += Utiles.getMin(oi1.getTabByElement(i),
-						lectureSignature.getTabByElement(i));
+						oi2.getTabByElement(i));
 			}
 			break;
 		case 2:
 			for (int i = 0; i < StaticValues.NOMBRE_DE_DIVISION_WB; i++) {
 				minumum += Utiles.getMin(oi1.getTabWbElement(i),
-						lectureSignature.getTabWbElement(i));
+						oi2.getTabWbElement(i));
 			}
 			break;
 		default:

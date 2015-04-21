@@ -23,11 +23,22 @@ public class Signature {
 	private String fileName;
 	private String pathImage;
 	
+	public Signature(File imageFile){
+		try {
+			image = ImageIO.read(imageFile);
+			fileName = Utiles.enleverCheminDuFichier(pathImage);
+		} catch (IOException e) {
+			System.out.println("Fichier introuvable!!");
+			e.printStackTrace();
+		}
+		remplirTableRGB(image);
+	}
+	
 	public Signature(String pathImage) {
 		this.pathImage = pathImage;
 		try {
 			image = ImageIO.read(new File(pathImage));
-			fileName = Utiles.getFileName(pathImage);
+			fileName = Utiles.enleverCheminDuFichier(pathImage);
 		} catch (IOException e) {
 			System.out.println("Fichier introuvable!!");
 			e.printStackTrace();
@@ -37,9 +48,19 @@ public class Signature {
 	}
 	
 	public Signature(String rg, String by, String wb){
-		tabRgString = Utiles.getSignatureFromeTab(rg);
-		tabByString = Utiles.getSignatureFromeTab(by);
-		tabWbString = Utiles.getSignatureFromeTab(wb);
+		tabRgString = Utiles.getSignatureFromeStringTab(rg);
+		tabByString = Utiles.getSignatureFromeStringTab(by);
+		tabWbString = Utiles.getSignatureFromeStringTab(wb);
+		lireLineRG(tabRgString);
+		lireLineBy(tabByString);
+		lireLineWb(tabWbString);
+	}
+
+	public Signature(int[] tabRg, int[] tabBy, int[] tabWb) {
+		super();
+		this.tabRg = tabRg;
+		this.tabBy = tabBy;
+		this.tabWb = tabWb;
 	}
 
 	/**
@@ -97,6 +118,47 @@ public class Signature {
 		wb = r + g + b;
 	}
 
+	private void lireLineRG(String line) {
+		String numText = "";
+		int compteur = 0;
+		for (int i = 0; i < line.length(); i++) {
+			if (line.charAt(i) == ' ' && compteur != tabRg.length) {
+				tabRg[compteur] = (Integer.parseInt(numText));
+				compteur++;
+				numText = "";
+			} else {
+				numText += line.charAt(i);
+			}
+		}
+	}
+
+	private void lireLineBy(String line) {
+		String numText = "";
+		int compteur = 0;
+		for (int i = 0; i < line.length(); i++) {
+			if (line.charAt(i) == ' ' && compteur != tabBy.length) {
+				tabBy[compteur] = (Integer.parseInt(numText));
+				compteur++;
+				numText = "";
+			} else {
+				numText += line.charAt(i);
+			}
+		}
+	}
+
+	private void lireLineWb(String line) {
+		String numText = "";
+		int compteur = 0;
+		for (int i = 0; i < line.length(); i++) {
+			if (line.charAt(i) == ' ' && compteur != tabWb.length) {
+				tabWb[compteur] = (Integer.parseInt(numText));
+				compteur++;
+				numText = "";
+			} else {
+				numText += line.charAt(i);
+			}
+		}
+	}
 
 	public int getTabRgElement(int elementNumero) {
 		return tabRg[elementNumero];
