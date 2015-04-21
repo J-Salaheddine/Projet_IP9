@@ -13,9 +13,9 @@ public class Signature {
 	private int[] tabBy = new int[StaticValues.NOMBRE_DE_DIVISION_BY] ;
 	private int[] tabWb = new int[StaticValues.NOMBRE_DE_DIVISION_WB] ;
 	
-	private String tabRgString;
-	private String tabByString;
-	private String tabWbString;
+//	private String tabRgString;
+//	private String tabByString;
+//	private String tabWbString;
 	
 	private BufferedImage image = null;
 	private int rg, by, wb;
@@ -47,14 +47,14 @@ public class Signature {
 		//affiche();
 	}
 	
-	public Signature(String rg, String by, String wb){
-		tabRgString = Utiles.getSignatureFromeStringTab(rg);
-		tabByString = Utiles.getSignatureFromeStringTab(by);
-		tabWbString = Utiles.getSignatureFromeStringTab(wb);
-		lireLineRG(tabRgString);
-		lireLineBy(tabByString);
-		lireLineWb(tabWbString);
-	}
+//	public Signature(String rg, String by, String wb){
+//		tabRgString = Utiles.getSignatureFromeStringTab(rg);
+//		tabByString = Utiles.getSignatureFromeStringTab(by);
+//		tabWbString = Utiles.getSignatureFromeStringTab(wb);
+//		lireLineRG(tabRgString);
+//		lireLineBy(tabByString);
+//		lireLineWb(tabWbString);
+//	}
 
 	public Signature(int[] tabRg, int[] tabBy, int[] tabWb) {
 		super();
@@ -118,47 +118,47 @@ public class Signature {
 		wb = r + g + b;
 	}
 
-	private void lireLineRG(String line) {
-		String numText = "";
-		int compteur = 0;
-		for (int i = 0; i < line.length(); i++) {
-			if (line.charAt(i) == ' ' && compteur != tabRg.length) {
-				tabRg[compteur] = (Integer.parseInt(numText));
-				compteur++;
-				numText = "";
-			} else {
-				numText += line.charAt(i);
-			}
-		}
-	}
-
-	private void lireLineBy(String line) {
-		String numText = "";
-		int compteur = 0;
-		for (int i = 0; i < line.length(); i++) {
-			if (line.charAt(i) == ' ' && compteur != tabBy.length) {
-				tabBy[compteur] = (Integer.parseInt(numText));
-				compteur++;
-				numText = "";
-			} else {
-				numText += line.charAt(i);
-			}
-		}
-	}
-
-	private void lireLineWb(String line) {
-		String numText = "";
-		int compteur = 0;
-		for (int i = 0; i < line.length(); i++) {
-			if (line.charAt(i) == ' ' && compteur != tabWb.length) {
-				tabWb[compteur] = (Integer.parseInt(numText));
-				compteur++;
-				numText = "";
-			} else {
-				numText += line.charAt(i);
-			}
-		}
-	}
+//	private void lireLineRG(String line) {
+//		String numText = "";
+//		int compteur = 0;
+//		for (int i = 0; i < line.length(); i++) {
+//			if (line.charAt(i) == ' ' && compteur != tabRg.length) {
+//				tabRg[compteur] = (Integer.parseInt(numText));
+//				compteur++;
+//				numText = "";
+//			} else {
+//				numText += line.charAt(i);
+//			}
+//		}
+//	}
+//
+//	private void lireLineBy(String line) {
+//		String numText = "";
+//		int compteur = 0;
+//		for (int i = 0; i < line.length(); i++) {
+//			if (line.charAt(i) == ' ' && compteur != tabBy.length) {
+//				tabBy[compteur] = (Integer.parseInt(numText));
+//				compteur++;
+//				numText = "";
+//			} else {
+//				numText += line.charAt(i);
+//			}
+//		}
+//	}
+//
+//	private void lireLineWb(String line) {
+//		String numText = "";
+//		int compteur = 0;
+//		for (int i = 0; i < line.length(); i++) {
+//			if (line.charAt(i) == ' ' && compteur != tabWb.length) {
+//				tabWb[compteur] = (Integer.parseInt(numText));
+//				compteur++;
+//				numText = "";
+//			} else {
+//				numText += line.charAt(i);
+//			}
+//		}
+//	}
 
 	public int getTabRgElement(int elementNumero) {
 		return tabRg[elementNumero];
@@ -170,17 +170,17 @@ public class Signature {
 		return tabWb[elementNumero];
 	}
 	
-	public String getTabRgString() {
-		return tabRgString;
-	}
-
-	public String getTabByString() {
-		return tabByString;
-	}
-
-	public String getTabWbString() {
-		return tabWbString;
-	}
+//	public String getTabRgString() {
+//		return tabRgString;
+//	}
+//
+//	public String getTabByString() {
+//		return tabByString;
+//	}
+//
+//	public String getTabWbString() {
+//		return tabWbString;
+//	}
 
 	public String getFileName() {
 		return fileName.substring(0,fileName.length() - 4);

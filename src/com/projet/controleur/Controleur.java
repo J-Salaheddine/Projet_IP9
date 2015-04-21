@@ -23,7 +23,7 @@ public class Controleur {
 		ChargerRepertoire cr = new ChargerRepertoire(repertoirePath);
 	}
 	
-	public Signature sigantureAppImage(File imageFile){
+	public Signature calculerSignature(File imageFile){
 		Signature sig = new Signature(imageFile);
 		return sig;
 	}
@@ -63,11 +63,11 @@ public class Controleur {
 	 * @param wb
 	 * @return
 	 */
-	public static Signature getSignature(String rg, String by, String wb){
-		Signature signature = new Signature(rg, by, wb);
-		return signature;
-	}
-	
+//	public static Signature getSignature(String rg, String by, String wb){
+//		Signature signature = new Signature(rg, by, wb);
+//		return signature;
+//	}
+//	
 	public double calculerSimilarite(Signature sig1, Signature sig2){
 		double tauxDeSmimilarite;
 		CalculeSimilariteSig css = new CalculeSimilariteSig(sig1, sig2);
