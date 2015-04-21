@@ -20,7 +20,7 @@ public class GestionnaireSignature {
 		super();
 		this.objetImage = objetImage;
 		genererSignature();
-		//publierSignature();
+		publierSignature();
 	}
 	
 	public void genererSignature(){

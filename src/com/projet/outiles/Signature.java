@@ -26,7 +26,6 @@ public class Signature {
 	public Signature(File imageFile){
 		try {
 			image = ImageIO.read(imageFile);
-			fileName = Utiles.enleverCheminDuFichier(pathImage);
 		} catch (IOException e) {
 			System.out.println("Fichier introuvable!!");
 			e.printStackTrace();
