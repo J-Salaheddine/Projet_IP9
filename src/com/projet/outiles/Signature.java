@@ -194,6 +194,18 @@ public class Signature {
 		String ext = getPath().substring(getPath().lastIndexOf("."));
 		return ext;
 	}
+
+	public int[] getTabRg() {
+		return tabRg;
+	}
+
+	public int[] getTabBy() {
+		return tabBy;
+	}
+
+	public int[] getTabWb() {
+		return tabWb;
+	}
 	
 	
 	
