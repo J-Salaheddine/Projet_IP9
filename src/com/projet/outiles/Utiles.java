@@ -1,5 +1,7 @@
 package com.projet.outiles;
 
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -11,12 +13,21 @@ import java.nio.channels.FileChannel;
 
 public class Utiles {
 	
+	public static BufferedImage copyImage(BufferedImage source){
+	    BufferedImage b = new BufferedImage(source.getWidth(), source.getHeight(), source.getType());
+	    Graphics g = b.getGraphics();
+	    g.drawImage(source, 0, 0, null);
+	    g.dispose();
+	    return b;
+	}
+	
+	/**
+	 * Cette fonction permet de vider un dossier
+	 * @param path
+	 */
 	public static void emptyDirectory(String path){
 		File folder = new File(path);
 		   for(File file : folder.listFiles()){
-//		      if(file.isDirectory()){
-//		          emptyDirectory(file);
-//		      }
 		       file.delete();
 		   }
 	}
@@ -84,6 +95,13 @@ public class Utiles {
 		return sig;
 	}
 	
+	/**
+	 * Cette fonction permet de définir l'intervale dans le quelle se situe la valeur de pixel analysé
+	 * @param intervaleTotale
+	 * @param nbrDeDivision
+	 * @param nombre
+	 * @return
+	 */
 	public static int deffinirIntervale(int intervaleTotale, int nbrDeDivision, int nombre){
 		int j = 0;
 		int inter = intervaleTotale*2/nbrDeDivision;
@@ -98,7 +116,12 @@ public class Utiles {
 		return j;
 	}
 
-	
+	/**
+	 * Récupérer le min de deux valeurs
+	 * @param num1
+	 * @param num2
+	 * @return
+	 */
 	public static int getMin(int num1, int num2){
 		if(num1<num2){
 			return num1;
@@ -106,9 +129,11 @@ public class Utiles {
 			return num2;
 		}
 	}
-	
 
-	
+	/**
+	 * Cette fonction permet de récupérer fichier par fichier les elements contenus dans un dossier
+	 * @param repertoire
+	 */
 	public static void listerRepertoire(File repertoire) {
 		String[] listefichiers;
 		int i;
@@ -123,34 +148,31 @@ public class Utiles {
 	/** copie le fichier source dans le fichier resultat
 	 * retourne vrai si cela réussit
 	 */
-	public static boolean copyFile(String sourcePath, String destPath){
-
+	public static boolean copyFile(String sourcePath, String destPath) {
 		FileChannel in = null; // canal d'entrée
 		FileChannel out = null; // canal de sortie
-		 
 		try {
-		  // Init
-		  in = new FileInputStream(sourcePath).getChannel();
-		  out = new FileOutputStream(destPath).getChannel();
-		 
-		  // Copie depuis le in vers le out
-		  
-		  in.transferTo(0, in.size(), out);
+			// Init
+			in = new FileInputStream(sourcePath).getChannel();
+			out = new FileOutputStream(destPath).getChannel();
+			// Copie depuis le in vers le out
+			in.transferTo(0, in.size(), out);
 		} catch (Exception e) {
-		  e.printStackTrace(); // n'importe quelle exception
+			e.printStackTrace(); // n'importe quelle exception
 		} finally { // finalement on ferme
-		  if(in != null) {
-		  	try {
-			  in.close();
-			} catch (IOException e) {}
-		  }
-		  if(out != null) {
-		  	try {
-			  out.close();
-			} catch (IOException e) {
-				return false;
+			if (in != null) {
+				try {
+					in.close();
+				} catch (IOException e) {
+				}
 			}
-		  }
+			if (out != null) {
+				try {
+					out.close();
+				} catch (IOException e) {
+					return false;
+				}
+			}
 		}
 		return true;
 	}
@@ -199,5 +221,30 @@ public class Utiles {
 		    }  
 		}
 	}
+	
+	    public static void copyFile(File sourceFile, File destFile)
+	            throws IOException {
+	        if (!destFile.exists()) {
+	            destFile.createNewFile();
+	        }
+
+	        FileChannel source = null;
+	        FileChannel destination = null;
+	        try {
+	            source = new FileInputStream(sourceFile).getChannel();
+	            destination = new FileOutputStream(destFile).getChannel();
+
+	           destination.transferFrom(source, 0, source.size());
+	            long count = 0;
+	          
+	        } finally {
+	            if (source != null) {
+	                source.close();
+	            }
+	            if (destination != null) {
+	                destination.close();
+	            }
+	        }
+	    }
 	
 }

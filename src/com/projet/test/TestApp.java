@@ -16,6 +16,7 @@ public class TestApp {
 	}
 	
 	public void chargerRepertoire(String repertoirePath){
+		System.out.println("Chargement de répértoir en cours...");
 		controleur.chargerRepertoire(repertoirePath);
 		System.out.println("Chargement de repértoire terminé!!");
 	}

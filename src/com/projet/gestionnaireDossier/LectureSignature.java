@@ -12,17 +12,16 @@ public class LectureSignature {
 	private int[] tabBy = new int[StaticValues.NOMBRE_DE_DIVISION_BY];
 	private int[] tabWb = new int[StaticValues.NOMBRE_DE_DIVISION_WB];
 
+	
 	public LectureSignature(String filePath) {
 		lireFicher(filePath);
 	}
 	
-	public LectureSignature(String rg, String by, String wb){
-		
-	}
-
-
+	/**
+	 * remplir les trois tableau a partir d'un fichier texte
+	 * @param filePath
+	 */
 	public void lireFicher(String filePath) {
-
 		Scanner scanner;
 		try {
 			scanner = new Scanner(new File(filePath));
@@ -37,7 +36,7 @@ public class LectureSignature {
 				} else if (calculator == 2) {
 					lireLineWb(line);
 				} else {
-					System.out.println("le fichier contien de line en plus ");
+					System.out.println("le fichier contien des lines en plus !!");
 				}
 				calculator++;
 			}

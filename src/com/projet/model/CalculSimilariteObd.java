@@ -10,19 +10,33 @@ public class CalculSimilariteObd {
 	private Signature signature;
 	private LectureSignature lectureSignature;
 
-	
-	public CalculSimilariteObd(Signature objetImage, LectureSignature lectureSignature) {
+	/**
+	 * Cette classe permet de calculer la similarité entre une signature calculer a partir d'une image et un fichier txt contenant une siganture
+	 * @param signature
+	 * @param lectureSignature
+	 */
+	public CalculSimilariteObd(Signature signature, LectureSignature lectureSignature) {
 		super();
-		this.signature = objetImage;
+		this.signature = signature;
 		this.lectureSignature = lectureSignature;
 	}
 
+	/**
+	 * Divise la somme des min par la plus petite somme
+	 * @return
+	 */
 	public float getTauxSimlarite() {
 		float tauxDeSimilarite = sommeDesMin(this.signature, lectureSignature)/calculePlusPetiteSomme(signature, lectureSignature);
 		//System.out.println("Le taux de cimilarité est: "+tauxDeSimilarite);
 		return tauxDeSimilarite;
 	}
 
+	/**
+	 * 
+	 * @param oi1
+	 * @param lectureSignature
+	 * @return
+	 */
 	private float sommeDesMin(Signature oi1, LectureSignature lectureSignature) {
 		float minsumRG = 0;
 		float minsumBY = 0;

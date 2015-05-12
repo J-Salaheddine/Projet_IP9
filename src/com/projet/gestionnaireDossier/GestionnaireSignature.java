@@ -16,6 +16,10 @@ public class GestionnaireSignature {
 	private String sigantureBY ="";
 	private String sigantureWB ="";
 	
+	/**
+	 * Cette classe permet de créer un fichier txt contenant la signature d'une image
+	 * @param objetImage
+	 */
 	public GestionnaireSignature(Signature objetImage) {
 		super();
 		this.objetImage = objetImage;
@@ -23,6 +27,10 @@ public class GestionnaireSignature {
 		publierSignature();
 	}
 	
+	/**
+	 * Constiruer un string pour chaque tableau 
+	 * [1,2,3,4] => "1 2 3 4"
+	 */
 	public void genererSignature(){
 		for(int i=0; i < StaticValues.NOMBRE_DE_DIVISION_RG ; i++){
 			sigantureRG += ""+objetImage.getTabRgElement(i)+" ";
@@ -33,10 +41,6 @@ public class GestionnaireSignature {
 		for(int i=0; i < StaticValues.NOMBRE_DE_DIVISION_WB ; i++){
 			sigantureWB += ""+objetImage.getTabWbElement(i)+" ";
 		}
-		System.out.println(objetImage.getFileName());
-		System.out.println(sigantureRG);
-		System.out.println(sigantureBY);
-		System.out.println(sigantureWB);
 	}
 
 	public String getSigantureRG() {
@@ -51,6 +55,9 @@ public class GestionnaireSignature {
 		return sigantureWB;
 	}
 
+	/**
+	 * Constituer et ecrire dans le fichier txt
+	 */
 	public void publierSignature(){
 		File fichier = new File(StaticValues.BDD_SIGANTURE+objetImage.getFileName()+".txt");
 		try {

@@ -1,10 +1,8 @@
 package com.projet.model;
 
-import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 
-import com.projet.gestionnaireDossier.GestionnaireSignature;
 import com.projet.gestionnaireDossier.LectureSignature;
 import com.projet.outiles.Signature;
 import com.projet.outiles.StaticValues;
@@ -13,18 +11,26 @@ import com.projet.outiles.Utiles;
 public class RechercheSimilariteImage {
 	private Signature objetImage;
 	private float tauxDeSimilarite;
+	
+	/**
+	 * Cette fonction permet de trouver les similarité d'une image importer 
+	 * les résulta sont les images qui on un taux de similarité supérieure ou egale au taux indiqué
+	 * @param objetImage
+	 * @param tauxDeSimilarite
+	 */
 	public RechercheSimilariteImage(Signature objetImage,float tauxDeSimilarite){
 		super();
-		reperdtoireRes();
+		Utiles.emptyDirectory(StaticValues.BDD_RES);
 		this.objetImage = objetImage;
 		this.tauxDeSimilarite = tauxDeSimilarite;
 	}
 	
-	
+	/**
+	 * Cette fonction permet de comparer une siganture avec la base de donnée (txt)
+	 */
 	public void listerRepertoire() {
 		File repertoire = new File(StaticValues.BDD_SIGANTURE);
 		String[] listefichiers;
-
 		int i;
 		listefichiers = repertoire.list();
 		for (i = 0; i < listefichiers.length; i++) {
@@ -32,29 +38,28 @@ public class RechercheSimilariteImage {
 				LectureSignature lectureSignature = new LectureSignature(StaticValues.BDD_SIGANTURE+listefichiers[i]);
 				CalculSimilariteObd calculSimilariteObd = new CalculSimilariteObd(objetImage, lectureSignature);
 				if(calculSimilariteObd.getTauxSimlarite() >= this.tauxDeSimilarite){
-					System.out.println(listefichiers[i]+" avec un taux de similarité de: "+calculSimilariteObd.getTauxSimlarite());
-					//recupererFichierDeSignature(listefichiers[i]);
-					
+					Float taux = calculSimilariteObd.getTauxSimlarite();
+					System.out.println(listefichiers[i]+" avec un taux de similarité de: "+taux);
+					//System.out.println(StaticValues.BDD_IMAGES+Utiles.enleverExtension(listefichiers[i])+".jpg");
+					File sourceFile = new File(StaticValues.BDD_IMAGES+Utiles.enleverExtension(listefichiers[i])+".jpg");
+					File sourceDest = new File(StaticValues.BDD_RES+Utiles.enleverExtension(listefichiers[i])+"__"+taux+".jpg");
+					try {
+						Utiles.copyFile(sourceFile, sourceDest);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
+					
 				}
 			}
 		}
-
-	public void reperdtoireRes(){
-		Utiles.emptyDirectory(StaticValues.BDD_RES);
-	
+	}
+	public void reperdtoireRes(String s,String s2){
+		
+		Utiles.copyFile(s, s2);
 	}
 
-//	public void recupererFichierDeSignature(String nomSignature){
-//		String fichierSansEx = Utiles.enleverExtension(nomSignature);
-//		System.out.println(StaticValues.BDD_IMAGES+fichierSansEx+".jpg");
-//		if(new File(StaticValues.BDD_IMAGES+fichierSansEx+".jpg").exists()){
-//			Utiles.copier(StaticValues.BDD_IMAGES+fichierSansEx+".jpg", StaticValues.BDD_RES);
-//		//	Utiles.copyFile(StaticValues.BDD_IMAGES+fichierSansEx+".jpg", StaticValues.BDD_RES);
-//			System.out.println("hha");
-//		}else if(new File(StaticValues.BDD_IMAGES+fichierSansEx+".png").exists()){
-//			Utiles.copyFile(StaticValues.BDD_IMAGES+fichierSansEx+".png", StaticValues.BDD_RES);
-//		}
-//	}
+	
+
 
 }

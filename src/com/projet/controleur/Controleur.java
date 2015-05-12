@@ -1,6 +1,8 @@
 package com.projet.controleur;
 
+import java.awt.Desktop;
 import java.io.File;
+import java.io.IOException;
 
 import com.projet.model.ChargerImage;
 import com.projet.model.ChargerRepertoire;
@@ -8,32 +10,58 @@ import com.projet.model.RechercheSimilariteImage;
 import com.projet.outiles.CalculeSimilariteSig;
 import com.projet.outiles.Signature;
 import com.projet.outiles.StaticValues;
-import com.projet.outiles.Utiles;
 
 public class Controleur {
-
+	/**
+	 * Cette classe permet d'acceder a tout les servis proposer par le programme
+	 */
 	public Controleur(){
 		super();
 	}
 	
+	/**
+	 * Ajouter une image dans la base de donnée
+	 * @param imagePath
+	 */
 	public void chargerImage(String imagePath){
 		Signature objetImage = new Signature(imagePath);
-		ChargerImage ci = new ChargerImage(objetImage);
+		new ChargerImage(objetImage);
 	}
 	
+	/**
+	 * Ajouter plusieur image contenur dans une seul dossier
+	 * @param repertoirePath
+	 */
 	public void chargerRepertoire(String repertoirePath){
-		ChargerRepertoire cr = new ChargerRepertoire(repertoirePath);
+		 new ChargerRepertoire(repertoirePath);
 	}
 	
+	/**
+	 * Calculer la siganture d'un fichier 
+	 * @param imageFile
+	 * @return
+	 */
 	public Signature calculerSignature(File imageFile){
 		Signature sig = new Signature(imageFile);
 		return sig;
 	}
 	
+	/**
+	 * Trouver une similarité a partir d'une image et la base de donnée
+	 * @param imagePath
+	 * @param taux
+	 */
 	public void rechercheImageSimlaire(String imagePath, float taux){
 		Signature oi1 = new Signature(imagePath);
 		RechercheSimilariteImage rechercheSimilariteImage = new RechercheSimilariteImage(oi1, taux);
 		rechercheSimilariteImage.listerRepertoire();
+		try {
+			Desktop.getDesktop().open(new File(StaticValues.BDD_RES));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Controleur!! ouvrir fenetre");
+		}
 	}
 	
 	/**
@@ -58,18 +86,13 @@ public class Controleur {
 		return signature;
 	}
 	
+
 	/**
-	 * elle retourn une signature a partire de trois string récupérer depuis la BDD
-	 * @param rg
-	 * @param by
-	 * @param wb
+	 * Calculer la similarité entre deux siganture
+	 * @param sig1
+	 * @param sig2
 	 * @return
 	 */
-//	public static Signature getSignature(String rg, String by, String wb){
-//		Signature signature = new Signature(rg, by, wb);
-//		return signature;
-//	}
-//	
 	public double calculerSimilarite(Signature sig1, Signature sig2){
 		double tauxDeSmimilarite;
 		CalculeSimilariteSig css = new CalculeSimilariteSig(sig1, sig2);

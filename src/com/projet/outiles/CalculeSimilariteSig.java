@@ -12,12 +12,21 @@ public class CalculeSimilariteSig {
 		this.signature2 = lectureSignature;
 	}
 
+	/**
+	 * Divise la somme des min par la plus petite somme
+	 * @return
+	 */
 	public float getTauxSimlarite() {
 		float tauxDeSimilarite = sommeDesMin(this.signature1, signature2)/calculePlusPetiteSomme(signature1, signature2);
-		//System.out.println("Le taux de cimilarité est: "+tauxDeSimilarite);
 		return tauxDeSimilarite;
 	}
 
+	/**
+	 * Prend en parametre deux signature et envoie le resulta de la somme des min
+	 * @param oi1
+	 * @param oi2
+	 * @return
+	 */
 	private float sommeDesMin(Signature oi1, Signature oi2) {
 		float minsumRG = 0;
 		float minsumBY = 0;
@@ -31,6 +40,12 @@ public class CalculeSimilariteSig {
 		return sommeMin;
 	}
 
+	/**
+	 * Prend en parametre deux signature et envoie la plus petite somme
+	 * @param oi1
+	 * @param oi2
+	 * @return
+	 */
 	public float calculePlusPetiteSomme(Signature oi1, Signature oi2) {
 		float minsumRG = 0;
 		float minsumBY = 0;
@@ -45,9 +60,9 @@ public class CalculeSimilariteSig {
 	}
 
 	/**
-	 * A partir de deux objetImage cette fonction permet de calculer la somme
-	 * des minimums a partir des deux histogramme c'est a dire que pour chaque
-	 * demande, on rend la somme des plus petite valeur des deux tableau
+	 * A partir de deux sigantures cette fonction permet de calculer la somme
+	 * des minimums a partir des deux histogramme 
+	 * c'est a dire a partir de deux tableau (histogrammes) [1,3,5] et [0,2,6] le resulta est: 0+2+5 = 7
 	 * 
 	 * @param oi1
 	 * @param oi2
@@ -84,9 +99,9 @@ public class CalculeSimilariteSig {
 	}
 
 	/**
-	 * elle somme les valeurs des histogramme et renvoie la plus petite des
-	 * valeurs
-	 * 
+	 * Cette fonction somme les valeur des deux histogramme et envoie la plus petite
+	 * [1,3,5] = 9 et [2,4,6] = 12
+	 * Le resulta envoyé est 9
 	 * @param oi1
 	 * @param oi2
 	 */

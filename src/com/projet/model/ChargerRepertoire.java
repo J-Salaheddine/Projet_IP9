@@ -6,7 +6,10 @@ import com.projet.outiles.Signature;
 
 public class ChargerRepertoire {
 
-	
+	/**
+	 * Cette classe permet de charger tout les images d'un dossier dans la base de donnée
+	 * @param cheminDuDossier
+	 */
 	public ChargerRepertoire(String cheminDuDossier){
 		super();
 		listerRepertoire(cheminDuDossier);
@@ -19,9 +22,9 @@ public class ChargerRepertoire {
 		int i;
 		listefichiers = repertoire.list();
 		for (i = 0; i < listefichiers.length; i++) {
-			if (listefichiers[i].endsWith(".jpg") == true) {
+			if (listefichiers[i].endsWith(".jpg") == true || listefichiers[i].endsWith(".png") == true) {
 				Signature objetImage = new Signature(cheminDuDossier+"\\"+listefichiers[i]);
-				ChargerImage ci = new ChargerImage(objetImage);
+				new ChargerImage(objetImage);
 			}
 		}
 	}
