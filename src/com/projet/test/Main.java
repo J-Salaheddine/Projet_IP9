@@ -17,8 +17,8 @@ public class Main {
 		/**
 		 * Test de charement repértoire d'image a la BD
 		 */
-//		String cheminDossier = "C:\\Users\\Nile\\Google Drive\\DESIGN\\Wallpapers HD\\N";
-//		test.chargerRepertoire(cheminDossier);
+		String cheminDossier = "C:\\Users\\Public\\Pictures\\Sample Pictures";
+		test.chargerRepertoire(cheminDossier);
 		
 
 		
