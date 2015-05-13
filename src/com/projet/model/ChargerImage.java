@@ -1,9 +1,9 @@
 package com.projet.model;
 
 import com.projet.gestionnaireDossier.GestionnaireSignature;
-import com.projet.outiles.Signature;
-import com.projet.outiles.StaticValues;
-import com.projet.outiles.Utiles;
+import com.projet.outils.Signature;
+import com.projet.outils.StaticValues;
+import com.projet.outils.Utiles;
 
 public class ChargerImage {
 

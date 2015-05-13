@@ -2,7 +2,7 @@ package com.projet.model;
 
 import java.io.File;
 
-import com.projet.outiles.Signature;
+import com.projet.outils.Signature;
 
 public class ChargerRepertoire {
 

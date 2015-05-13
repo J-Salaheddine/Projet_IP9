@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-import com.projet.outiles.StaticValues;
+import com.projet.outils.StaticValues;
 
 public class LectureSignature {
 

@@ -9,7 +9,7 @@ public class Main {
 		/**
 		 * Test De chargement d'image a la BD (dossier)
 		 */
-		//String cheminImage = "C:\\Users\\Nile\\Pictures\\salahImage.jpg";
+		String cheminImage = "C:\\Users\\Nile\\Pictures\\Tulips.jpg";
 		//test.chargerImage(cheminImage);
 		
 		
@@ -17,16 +17,22 @@ public class Main {
 		/**
 		 * Test de charement repértoire d'image a la BD
 		 */
-		String cheminDossier = "C:\\Users\\Public\\Pictures\\Sample Pictures";
-		test.chargerRepertoire(cheminDossier);
+		String cheminDossier = "C:\\Users\\Nile\\Desktop\\Banque image";
+		//test.chargerRepertoire(cheminDossier);
 		
 
 		
 		/**
 		 * Test de callcule de cimilarité
 		 */
-		String cheminImageATester = "C:\\Users\\Nile\\Pictures\\salahImage.jpg";
-		test.rechercheImageSimlaire(cheminImageATester, 0.8f);
+		String cheminImageATester = "C:\\Users\\Nile\\Pictures\\Tulips.jpg";
+		//test.rechercheImageSimlaire(cheminImage, 0.8f);
+		
+		/**
+		 * Test de callcule de cimilarité
+		 */
+		System.out.println("********************");
+		test.rechercheImageSimlaire2(cheminImage, 0.6f);
 		
 	}
 

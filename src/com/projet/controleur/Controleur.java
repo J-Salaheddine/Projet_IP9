@@ -4,12 +4,13 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 
+import com.projet.calculeSimilarite.minMax.RechercheSimilariteImage2;
+import com.projet.calculeSimilarite.minMin.CalculeSimilariteSig;
+import com.projet.calculeSimilarite.minMin.RechercheSimilariteImage;
 import com.projet.model.ChargerImage;
 import com.projet.model.ChargerRepertoire;
-import com.projet.model.RechercheSimilariteImage;
-import com.projet.outiles.CalculeSimilariteSig;
-import com.projet.outiles.Signature;
-import com.projet.outiles.StaticValues;
+import com.projet.outils.Signature;
+import com.projet.outils.StaticValues;
 
 public class Controleur {
 	/**
@@ -46,6 +47,8 @@ public class Controleur {
 		return sig;
 	}
 	
+	
+	
 	/**
 	 * Trouver une similarité a partir d'une image et la base de donnée
 	 * @param imagePath
@@ -55,6 +58,24 @@ public class Controleur {
 		Signature oi1 = new Signature(imagePath);
 		RechercheSimilariteImage rechercheSimilariteImage = new RechercheSimilariteImage(oi1, taux);
 		rechercheSimilariteImage.listerRepertoire();
+		try {
+			Desktop.getDesktop().open(new File(StaticValues.BDD_RES));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Controleur!! ouvrir fenetre");
+		}
+	}
+	
+	/**
+	 * Trouver une similarité a partir d'une image et la base de donnée
+	 * @param imagePath
+	 * @param taux
+	 */
+	public void rechercheImageSimlaire2(String imagePath, float taux){
+		Signature oi1 = new Signature(imagePath);
+		RechercheSimilariteImage2 rechercheSimilariteImage2 = new RechercheSimilariteImage2(oi1, taux);
+		rechercheSimilariteImage2.listerRepertoire();
 		try {
 			Desktop.getDesktop().open(new File(StaticValues.BDD_RES));
 		} catch (IOException e) {

@@ -6,8 +6,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import com.projet.outiles.Signature;
-import com.projet.outiles.StaticValues;
+import com.projet.outils.Signature;
+import com.projet.outils.StaticValues;
 
 public class GestionnaireSignature {
 
