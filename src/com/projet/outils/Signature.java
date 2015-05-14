@@ -19,6 +19,10 @@ public class Signature {
 	private String fileName;
 	private String pathImage;
 	
+	
+	public Signature(){
+		
+	}
 	/**
 	 * Prend un fichier (image) et vérifi l'existance
 	 * le calcule de l(histogrammes est lancé

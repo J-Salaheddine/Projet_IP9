@@ -4,9 +4,8 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 
-import com.projet.calculeSimilarite.minMax.RechercheSimilariteImage2;
-import com.projet.calculeSimilarite.minMin.CalculeSimilariteSig;
-import com.projet.calculeSimilarite.minMin.RechercheSimilariteImage;
+import com.projet.calculeSimilarite.CalculeSimilariteSig;
+import com.projet.calculeSimilarite.RechercheSimilariteImage;
 import com.projet.model.ChargerImage;
 import com.projet.model.ChargerRepertoire;
 import com.projet.outils.Signature;
@@ -72,10 +71,10 @@ public class Controleur {
 	 * @param imagePath
 	 * @param taux
 	 */
-	public void rechercheImageSimlaire2(String imagePath, float taux){
+	public void rechercheImageSimlaireDI(String imagePath, float taux){
 		Signature oi1 = new Signature(imagePath);
-		RechercheSimilariteImage2 rechercheSimilariteImage2 = new RechercheSimilariteImage2(oi1, taux);
-		rechercheSimilariteImage2.listerRepertoire();
+		RechercheSimilariteImage rechercheSimilariteImage = new RechercheSimilariteImage(oi1, taux);
+		rechercheSimilariteImage.listerRepertoireDI();
 		try {
 			Desktop.getDesktop().open(new File(StaticValues.BDD_RES));
 		} catch (IOException e) {

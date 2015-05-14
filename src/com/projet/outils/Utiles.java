@@ -2,8 +2,6 @@ package com.projet.outils;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -72,28 +70,28 @@ public class Utiles {
 		return fileName;
 	}
 	
-	/**
-	 * Cette fonction permet de récupérer le  string de la signature a partir d'un string récupérer de la base de donnée
-	 * [12,56,98,52,5] ------> 12 56 98 52 5
-	 * @param s
-	 * @return
-	 */
-	public static String getSignatureFromeStringTab(String s){
-		String sig = "";
-		for(int i=0; i< s.length(); i++){
-			if(s.charAt(i) == ','){
-				sig+=" ";
-			}
-			else if(s.charAt(i) == '[' ){
-				
-			}else if(s.charAt(i) == ']'){
-				i=s.length();
-			}else{
-				sig+=s.charAt(i);
-			}
-		}
-		return sig;
-	}
+//	/**
+//	 * Cette fonction permet de récupérer le  string de la signature a partir d'un string récupérer de la base de donnée
+//	 * [12,56,98,52,5] ------> 12 56 98 52 5
+//	 * @param s
+//	 * @return
+//	 */
+//	public static String getSignatureFromeStringTab(String s){
+//		String sig = "";
+//		for(int i=0; i< s.length(); i++){
+//			if(s.charAt(i) == ','){
+//				sig+=" ";
+//			}
+//			else if(s.charAt(i) == '[' ){
+//				
+//			}else if(s.charAt(i) == ']'){
+//				i=s.length();
+//			}else{
+//				sig+=s.charAt(i);
+//			}
+//		}
+//		return sig;
+//	}
 	
 	/**
 	 * Cette fonction permet de définir l'intervale dans le quelle se situe la valeur de pixel analysé
@@ -157,6 +155,34 @@ public class Utiles {
 			return num2;
 		}
 	}
+	
+	/**
+	 * Récupérer le min de deux valeurs
+	 * @param num1
+	 * @param num2
+	 * @return
+	 */
+	public static float getMinf(float num1, float num2){
+		if(num1<num2){
+			return num1;
+		}else{
+			return num2;
+		}
+	}
+	
+	/**
+	 * Récupérer le min de deux valeurs
+	 * @param num1
+	 * @param num2
+	 * @return
+	 */
+	public static float getMaxf(float num1, float num2){
+		if(num1>num2){
+			return num1;
+		}else{
+			return num2;
+		}
+	}
 
 	/**
 	 * Cette fonction permet de récupérer fichier par fichier les elements contenus dans un dossier
@@ -205,51 +231,6 @@ public class Utiles {
 		return true;
 	}
 	
-	
-	public static void copier(String cheminDuFichier, String cheminDes){
-		FileInputStream lecture= null;
-		BufferedInputStream tamponLecture = null;
-		FileOutputStream copie= null;
-		BufferedOutputStream tamponCopie= null;
-		try
-		{
-		    lecture = new FileInputStream(cheminDuFichier);
-		    tamponLecture = new BufferedInputStream(lecture);
-		     
-		    copie = new FileOutputStream(cheminDes);
-		    tamponCopie = new BufferedOutputStream(copie);
-		     
-		    while (true)
-		    {
-		        int valeurOctet = tamponLecture.read();
-		         
-		        if (valeurOctet == -1)
-		            break;
-		         
-		        tamponCopie.write(valeurOctet);
-		    }
-		}
-		catch (IOException exception)
-		{
-		    exception.printStackTrace();
-		}
-		finally
-		{ 
-		    try
-		    {
-		        tamponLecture.close();
-		        lecture.close();
-		        tamponCopie.flush();
-		        tamponCopie.close();
-		        copie.close();
-		    }
-		    catch(IOException exception1)
-		    {
-		      exception1.printStackTrace();
-		    }  
-		}
-	}
-	
 	    public static void copyFile(File sourceFile, File destFile)
 	            throws IOException {
 	        if (!destFile.exists()) {
@@ -263,7 +244,6 @@ public class Utiles {
 	            destination = new FileOutputStream(destFile).getChannel();
 
 	           destination.transferFrom(source, 0, source.size());
-	            long count = 0;
 	          
 	        } finally {
 	            if (source != null) {
@@ -274,5 +254,24 @@ public class Utiles {
 	            }
 	        }
 	    }
+	    
+	    public static float[] normaliserVecteur(int[] v) {
+	    	float[] vResult = new float[v.length];
+			for (int i = 0; i < v.length; i++){
+				vResult[i] = v[i] / LongeurVecteur(v);
+			}
+			return vResult; 
+		}
+
+		private static float LongeurVecteur(int[] v) {
+			float somme = 0;
+			for (int i = 0; i < v.length; i++)
+			{
+				somme += Math.pow( v[i],2);
+			}
+			return (float) Math.sqrt(somme);
+		}
+
+
 	
 }

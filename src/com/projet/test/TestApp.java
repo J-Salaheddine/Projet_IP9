@@ -26,7 +26,7 @@ public class TestApp {
 	}
 	
 	public void rechercheImageSimlaire2(String imagePath, float taux){
-		controleur.rechercheImageSimlaire2(imagePath, taux);
+		controleur.rechercheImageSimlaireDI(imagePath, taux);
 	}
 	
 

@@ -1,6 +1,6 @@
 package com.projet.model;
 
-import com.projet.gestionnaireDossier.GestionnaireSignature;
+import com.projet.gestionnaireDossier.WriteSignature;
 import com.projet.outils.Signature;
 import com.projet.outils.StaticValues;
 import com.projet.outils.Utiles;
@@ -21,7 +21,7 @@ public class ChargerImage {
 		if (cheminDuDossier.endsWith(".jpg") == true  || cheminDuDossier.endsWith(".png") == true) {
 			if (Utiles.copyFile(cheminDuDossier,StaticValues.BDD_IMAGES+objetImage.getFileName()+objetImage.getExtention())) {
 				Signature oi = new Signature(cheminDuDossier);
-				new GestionnaireSignature(oi);
+				new WriteSignature(oi);
 			}
 		}
 	}
